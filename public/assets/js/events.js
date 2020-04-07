@@ -15,7 +15,7 @@ window.addEventListener('load', ()=>{
 
 
     //When the video frame is clicked. This will enable picture-in-picture
-   
+
     document.getElementById('local').addEventListener('click', ()=>{
         console.log('Video clicked')
         if (!document.pictureInPictureElement) {
@@ -24,8 +24,8 @@ window.addEventListener('load', ()=>{
                 // Video failed to enter Picture-in-Picture mode.
                 console.error(error);
             });
-        } 
-          
+        }
+
         else {
             document.exitPictureInPicture()
             .catch(error => {
@@ -34,6 +34,19 @@ window.addEventListener('load', ()=>{
             });
         }
     });
+
+/**
+    //double click on image should decode it
+    document.getElementById('x').addEventListener('ondblclick', () =>{
+      alert(document.getElementById('x').name);
+    });
+**/
+    if(document.getElementById('x'))
+    {
+      document.getElementById('rowDiv').addEventListener('ondblclick', () =>{
+        window.alert(document.getElementById('x').name);
+      });
+    }
 
 
     //When the 'Create room" is button is clicked
@@ -54,10 +67,10 @@ window.addEventListener('load', ()=>{
             let roomLink = `${location.origin}?room=${roomName.trim().replace(' ', '_')}_${helpers.generateRandomString()}`;
 
             //show message with link to room
-            document.querySelector('#room-created').innerHTML = `Room successfully created. Click <a href='${roomLink}'>here</a> to enter room. 
+            document.querySelector('#room-created').innerHTML = `Room successfully created. Click <a href='${roomLink}'>here</a> to enter room.
                 Share the room link with your partners.`;
 
-            //empty the values 
+            //empty the values
             document.querySelector('#room-name').value = '';
             document.querySelector('#your-name').value = '';
            // document.querySelector('#login-window').toggleAttribute('hidden');
@@ -69,7 +82,7 @@ window.addEventListener('load', ()=>{
         }
     });
 
-    
+
     //When the 'Enter room' button is clicked.
     document.getElementById('enter-room').addEventListener('click', (e)=>{
         e.preventDefault();

@@ -119,7 +119,6 @@ window.addEventListener('load', ()=>{
             msg.file = evt.target.result;
             msg.fileName = img.name + message;
             h.addChat(msg, 'local');
-            console.log(msg);
             socket.emit('base64 file', msg);
           };
           reader.readAsDataURL(img);
