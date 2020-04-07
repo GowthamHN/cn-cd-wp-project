@@ -1,0 +1,89 @@
+.room-comm {
+    height: 85vh;
+    float: left;
+}
+.files {
+    height: 60vh;
+    overflow: hidden;
+    border: 3px solid #800A94 ;
+    padding-top: 0em;
+    margin-top: 0em;
+
+    background-color: #D0A7F1;
+
+    border-radius: 10px;
+}
+#chat-pane {
+    border: 3px solid #800A94 ;
+    background-color: #D0A7F1;
+    height: 90vh;
+    border-radius: 10px;
+}
+
+#drop-zone {
+    /*Sort of important*/
+    width: 300px;
+    /*Sort of important*/
+    height: 150px;
+    position:absolute;
+    left:50%;
+    background-color: #ffffff;
+    /*top:100px;*/
+    bottom:20px;
+    margin-left:-150px;
+    border: 2px dashed rgba(0,0,0,.3);
+    border-radius: 20px;
+    font-family: Arial;
+    text-align: center;
+    position: absolute;
+    line-height: 180px;
+    font-size: 20px;
+    color: rgba(0,0,0,.3);
+}
+.local-video{
+    z-index: -1;
+}
+    #drop-zone input {
+        /*Important*/
+        position: absolute;
+        /*Important*/
+        cursor: pointer;
+        left: 0px;
+        top: 0px;
+        /*Important This is only comment out for demonstration purposes.
+        opacity:0; */
+    }
+
+    /*Important*/
+    #drop-zone.mouse-over {
+        border: 2px dashed rgba(0,0,0,.5);
+        color: rgba(0,0,0,.5);
+    }
+
+
+/*If you dont want the button*/
+#clickHere {
+    position: absolute;
+    cursor: pointer;
+    left: 100px;
+    top: 20px;
+    margin-left: -50px;
+    margin-top: 20px;
+    line-height: 26px;
+    color: white;
+    font-size: 12px;
+    width: 200px;
+    height: 26px;
+    border-radius: 4px;
+    background-color: #3b85c3;
+
+}
+
+    #clickHere:hover {
+        background-color: #4499DD;
+        color: black;
+
+    }
+#chat-input {
+    position: relative;
+}

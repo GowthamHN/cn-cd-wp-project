@@ -1,0 +1,18 @@
+.left-col {
+    background-color: #D0A7F1;
+    height: auto;
+    height: 85vh;
+}
+.row-line {
+    overflow: hidden;
+}
+
+.head-line {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30pt;
+}
+.input-area {
+    width: 70% ;
+    border-radius: 30%;
+    border-collapse: collapse;
+}
