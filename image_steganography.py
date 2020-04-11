@@ -1,5 +1,9 @@
+
+# Python program implementing Image Steganography
+
+# PIL module is used to extract
+# pixels of image and modify it
 from PIL import Image
-import sys
 
 # Convert encoding data into 8-bit binary
 # form using ASCII value of characters
@@ -13,7 +17,8 @@ def genData(data):
             newd.append(format(ord(i), '08b'))
         return newd
 
-
+# Pixels are modified according to the
+# 8-bit binary data and finally returned
 def modPix(pix, data):
 
     datalist = genData(data)
@@ -54,7 +59,6 @@ def modPix(pix, data):
         yield pix[3:6]
         yield pix[6:9]
 
-
 def encode_enc(newimg, data):
     w = newimg.size[0]
     (x, y) = (0, 0)
@@ -69,16 +73,61 @@ def encode_enc(newimg, data):
         else:
             x += 1
 
+# Encode data into image
+def encode():
+    img = input("Enter image name(with extension): ")
+    image = Image.open(img, 'r')
 
-def encode(image, data):
+    data = input("Enter data to be encoded : ")
+    if (len(data) == 0):
+        raise ValueError('Data is empty')
+
     newimg = image.copy()
     encode_enc(newimg, data)
-	sys.stdout.write(newimg)
 
-def main(a,b):
-    encode(a,b)
+    new_img_name = input("Enter the name of new image(with extension): ")
+#    newimg.save(new_img_name, "JPEG")
+    newimg.save(new_img_name, str(new_img_name.split(".")[1].upper()))
 
-if __name__ == "__main__":
-    main(sys.argv[1],sys.argv[2])
+# Decode the data in the image
+def decode():
+    img = input("Enter image name(with extension) :")
+    image = Image.open(img, 'r')
 
-#send the image
+    data = ''
+    imgdata = iter(image.getdata())
+
+    while (True):
+        pixels = [value for value in imgdata.__next__()[:3] +
+                                  imgdata.__next__()[:3] +
+                                  imgdata.__next__()[:3]]
+        # string of binary data
+        binstr = ''
+
+        for i in pixels[:8]:
+            if (i % 2 == 0):
+                binstr += '0'
+            else:
+                binstr += '1'
+
+        data += chr(int(binstr, 2))
+        if (pixels[-1] % 2 != 0):
+            return data
+
+# Main Function
+def main():
+    a = int(input(":: Welcome to Steganography ::\n"
+                        "1. Encode\n 2. Decode\n"))
+    if (a == 1):
+        encode()
+
+    elif (a == 2):
+        print("Decoded word- " + decode())
+    else:
+        raise Exception("Enter correct input")
+
+# Driver Code
+if __name__ == '__main__' :
+
+    # Calling main function
+    main()

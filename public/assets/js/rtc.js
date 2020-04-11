@@ -256,7 +256,7 @@ window.addEventListener('load', ()=>{
           }
           else if(document.getElementById('decrypt').checked)
           {
-            var image = document.getElementById('file').value;
+            var enc_image = document.getElementById('file').files[0];
             if(!image)
               window.alert('upload file bitch');
             else {
